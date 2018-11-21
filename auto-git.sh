@@ -20,4 +20,5 @@ cat $2 | while read ver; do
 	git checkout master
 done
 
-git push --all --prune origin
+git push --prune --all  origin
+git push --prune --tags origin
