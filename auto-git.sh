@@ -16,7 +16,8 @@ done
 cat $2 | while read ver; do
 	git checkout $ver
 	short=$(echo $ver | cut -d. -f-2)
-	git tag $short
+	git tag -d $short
+	git tag    $short
 	git checkout master
 done
 
