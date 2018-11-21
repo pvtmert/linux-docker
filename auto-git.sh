@@ -13,4 +13,11 @@ cat versions.txt | while read ver; do
 	continue
 done
 
+cat current.txt | while read ver; do
+	git checkout $ver
+	short=$(echo $ver | cut -d. -f-2)
+	git tag $short
+	git checkout master
+done
+
 git push --all origin
