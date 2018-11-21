@@ -20,4 +20,4 @@ cat $2 | while read ver; do
 	git checkout master
 done
 
-git push --all origin
+git push --all --prune origin
