@@ -2,7 +2,7 @@
 
 FROM debian:stable
 
-ENV TYPE .tar.gz
+ENV TYPE tar.gz
 ENV BASEURL https://git.kernel.org/torvalds
 ENV VERSION t/linux-4.20-rc3
 
