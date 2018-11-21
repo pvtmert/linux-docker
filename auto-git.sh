@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cat versions.txt | while read ver; do
+cat $1 | while read ver; do
 	git checkout master
 	git checkout -b $ver || git checkout $ver
 	make $ver.dockerfile
@@ -13,7 +13,7 @@ cat versions.txt | while read ver; do
 	continue
 done
 
-cat current.txt | while read ver; do
+cat $2 | while read ver; do
 	git checkout $ver
 	short=$(echo $ver | cut -d. -f-2)
 	git tag $short
