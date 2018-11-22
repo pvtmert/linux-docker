@@ -1,10 +1,10 @@
-#!/usr/bin/env docker build --compress -t pvtmert/linux -f
+#!/usr/bin/env docker build --compress -t pvtmert/linux:4.19.3 -f
 
 FROM debian:stable
 
-ENV TYPE tar.gz
-ENV BASEURL https://git.kernel.org/torvalds
-ENV VERSION t/linux-4.20-rc3
+ENV BASEURL https://cdn.kernel.org/pub/linux/kernel
+ENV VERSION v4.x/linux-4.19.3
+ENV TYPE tar.xz
 
 WORKDIR /data
 
@@ -19,6 +19,8 @@ RUN test -e $(basename $VERSION.$TYPE)      \
 	&& bsdtar xf $(basename $VERSION.$TYPE) \
 	|| true
 
-RUN time make -C $(basename $VERSION $TYPE) -j $(nproc) defconfig modules vmlinux
+RUN time make -C $(basename $VERSION $TYPE) -j $(nproc) \
+	defconfig modules vmlinux
 
 CMD time make -C $(basename $VERSION $TYPE) -j $(nproc)
+
