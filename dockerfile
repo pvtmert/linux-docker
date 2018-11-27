@@ -1,9 +1,9 @@
-#!/usr/bin/env docker build --compress -t pvtmert/linux:4.4.164 -f
+#!/usr/bin/env docker build --compress -t pvtmert/linux:4.19.4 -f
 
 FROM debian:stable
 
 ENV BASEURL https://cdn.kernel.org/pub/linux/kernel
-ENV VERSION v4.x/linux-4.4.164
+ENV VERSION v4.x/linux-4.19.4
 ENV TYPE tar.xz
 
 WORKDIR /data
