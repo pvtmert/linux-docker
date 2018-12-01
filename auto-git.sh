@@ -14,11 +14,11 @@ cat $1 | while read ver; do
 done
 
 cat $2 | while read ver; do
-	git checkout $ver
+	git checkout -b $ver || git checkout $ver
 	short=$(echo $ver | cut -d. -f-2)
 	git tag -f $short
 	git checkout master
 done
 
-git push --prune --all  origin
-git push --prune --tags origin
+#git push --prune --all  origin
+#git push --prune --tags origin
